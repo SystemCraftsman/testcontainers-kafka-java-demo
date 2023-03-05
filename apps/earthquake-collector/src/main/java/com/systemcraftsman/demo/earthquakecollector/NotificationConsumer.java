@@ -1,5 +1,6 @@
 package com.systemcraftsman.demo.earthquakecollector;
 
+import com.systemcraftsman.demo.earthquakecollector.model.LocationNotification;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ public class NotificationConsumer {
 
     @KafkaListener(topics = "${kafka.topic}")
     public void consume(ConsumerRecord<?, ?> consumerRecord) {
-        LOGGER.info("received payload='{}'", consumerRecord.toString());
+        LocationNotification notification = (LocationNotification) consumerRecord.value();
+        LOGGER.info("https://www.google.com/maps/search/?api=1&query={},{}", notification.getLatitude(), notification.getLongitude());
     }
 }
