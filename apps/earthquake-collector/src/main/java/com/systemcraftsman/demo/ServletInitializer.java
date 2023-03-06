@@ -1,4 +1,4 @@
-package com.systemcraftsman.demo.earthquakecollector;
+package com.systemcraftsman.demo;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

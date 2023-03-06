@@ -1,4 +1,4 @@
-package com.systemcraftsman.demo.earthquakecollector;
+package com.systemcraftsman.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

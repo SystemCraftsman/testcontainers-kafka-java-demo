@@ -1,17 +1,14 @@
-package com.systemcraftsman.demo.earthquakecollector.model;
+package com.systemcraftsman.demo.model;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.time.Instant;
 
-public class LocationNotification implements Serializable {
+public class LocationNotification extends Notification implements Serializable {
 
     private String longitude;
     private String latitude;
 
-    public Timestamp getTimestamp() {
-        return Timestamp.from(Instant.now());
-    }
     public String getLongitude() {
         return longitude;
     }
@@ -28,4 +25,8 @@ public class LocationNotification implements Serializable {
         this.latitude = latitude;
     }
 
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this).append("timestamp", super.getTimestamp()).append("latitude", latitude).append("longitude", longitude).toString();
+    }
 }
