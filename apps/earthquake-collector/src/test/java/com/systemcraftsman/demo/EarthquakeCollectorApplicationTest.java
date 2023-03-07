@@ -3,11 +3,10 @@ package com.systemcraftsman.demo;
 import com.github.javafaker.Faker;
 import com.systemcraftsman.demo.model.LocationNotification;
 import org.junit.jupiter.api.Test;
+import org.rnorth.ducttape.unreliables.Unreliables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -17,6 +16,8 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -24,28 +25,31 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest
 @Testcontainers
 @ActiveProfiles("test")
-public class EarthquakeCollectorApplicationTests {
+public class EarthquakeCollectorApplicationTest {
 
     @Value("${kafka.topic}")
     private String topic;
-
-    @Container
-    public static KafkaContainer kafka =
-            new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
-
-    @DynamicPropertySource
-    static void registerKafkaProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.kafka.bootstrap-servers", () -> kafka.getBootstrapServers());
-    }
 
     @Autowired
     private NotificationConsumer notificationConsumer;
 
     @Autowired
-    private KafkaTestProducer producer;
+    private KafkaProducerForTest producer;
 
+    //TODO: Add the Kafka container instance
+    @Container
+    public static KafkaContainer kafka =
+            new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
+
+    //TODO: Register Kafka properties for dynamic values such as Kafka bootstrap servers
+    @DynamicPropertySource
+    static void registerKafkaProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.kafka.bootstrap-servers", () -> kafka.getBootstrapServers());
+    }
+
+    //TODO: Implement the testNotificationArrival test method
     @Test
-    public void testNotificationArrival() throws Exception {
+    public void testNotificationArrival() {
         Faker faker = new Faker();
 
         LocationNotification locationNotification = new LocationNotification();
@@ -54,31 +58,22 @@ public class EarthquakeCollectorApplicationTests {
 
         producer.send(topic, locationNotification);
 
-        while(notificationConsumer.getLocationUrl() == null)
-            Thread.sleep(1000);
+        Unreliables.retryUntilTrue(10, TimeUnit.SECONDS, () -> {
+            String locationUrl = notificationConsumer.getLocationUrl();
 
-        String locationUrl = notificationConsumer.getLocationUrl();
+            if (locationUrl == null)
+                return false;
 
-        assertNotNull(locationUrl);
-        assertTrue(locationUrl.contains(locationNotification.getLatitude()));
-        assertTrue(locationUrl.contains(locationNotification.getLongitude()));
+            assertNotNull(locationUrl);
+            assertTrue(locationUrl.contains(locationNotification.getLatitude()));
+            assertTrue(locationUrl.contains(locationNotification.getLongitude()));
+
+            return true;
+        });
+
+
     }
 
-    @Test
-    void contextLoads() {
-    }
-
-}
-
-
-@Component
-class KafkaTestProducer {
-    @Autowired
-    private KafkaTemplate<String, LocationNotification> kafkaTemplate;
-
-    public void send(String topic, LocationNotification payload) {
-        kafkaTemplate.send(topic, payload);
-    }
 }
 
 

@@ -5,10 +5,6 @@ import com.systemcraftsman.demo.deserializer.NotificationDeserializer;
 import com.systemcraftsman.demo.model.LocationNotification;
 import com.systemcraftsman.demo.model.Notification;
 import com.systemcraftsman.demo.serializer.NotificationSerializer;
-import junit.framework.TestCase;
-import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -27,7 +23,6 @@ import org.testcontainers.shaded.com.google.common.collect.ImmutableMap;
 import org.testcontainers.utility.DockerImageName;
 
 import java.time.Duration;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -35,15 +30,18 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+//TODO: Annotate with @Testcontainers
 @Testcontainers
 public class AppTest {
 
+    //TODO: Add the Kafka container instance
     @Container
     public static KafkaContainer kafka =
             new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
 
+    //TODO: Implement the testNotificationSending test method
     @Test
-    public void testKafkaFunctionality() throws Exception {
+    public void testNotificationSending() throws Exception {
         String topicName = "notifications-test";
         String bootstrapServers = kafka.getBootstrapServers();
 
