@@ -37,42 +37,14 @@ public class EarthquakeCollectorApplicationTest {
     private KafkaProducerForTest producer;
 
     //TODO: Add the Kafka container instance
-    @Container
-    public static KafkaContainer kafka =
-            new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
 
     //TODO: Register Kafka properties for dynamic values such as Kafka bootstrap servers
     @DynamicPropertySource
-    static void registerKafkaProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.kafka.bootstrap-servers", () -> kafka.getBootstrapServers());
-    }
+    static void registerKafkaProperties(DynamicPropertyRegistry registry) {}
 
     //TODO: Implement the testNotificationArrival test method
     @Test
-    public void testNotificationArrival() {
-        Faker faker = new Faker();
-
-        LocationNotification locationNotification = new LocationNotification();
-        locationNotification.setLongitude(faker.address().longitude());
-        locationNotification.setLatitude(faker.address().latitude());
-
-        producer.send(topic, locationNotification);
-
-        Unreliables.retryUntilTrue(10, TimeUnit.SECONDS, () -> {
-            String locationUrl = notificationConsumer.getLocationUrl();
-
-            if (locationUrl == null)
-                return false;
-
-            assertNotNull(locationUrl);
-            assertTrue(locationUrl.contains(locationNotification.getLatitude()));
-            assertTrue(locationUrl.contains(locationNotification.getLongitude()));
-
-            return true;
-        });
-
-
-    }
+    public void testNotificationArrival() {}
 
 }
 
