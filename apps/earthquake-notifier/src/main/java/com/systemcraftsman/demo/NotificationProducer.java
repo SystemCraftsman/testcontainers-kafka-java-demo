@@ -11,11 +11,12 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 
 public class NotificationProducer {
-    public static void produce(){
-        String bootstrapServers = "127.0.0.1:9092";
 
+    private static String BOOTSTRAP_SERVERS = "127.0.0.1:9092";
+
+    public static void produce(){
         Properties properties = new Properties();
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, NotificationSerializer.class.getName());
 
@@ -28,6 +29,7 @@ public class NotificationProducer {
         KafkaProducer<String, LocationNotification> producer = new KafkaProducer<>(properties);
         ProducerRecord<String, LocationNotification> producerRecord = new ProducerRecord<>("notifications", locationNotification);
 
+        System.out.println(producerRecord.value());
         producer.send(producerRecord);
 
         producer.flush();
