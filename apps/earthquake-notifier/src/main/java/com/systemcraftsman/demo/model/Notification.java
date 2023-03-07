@@ -7,8 +7,16 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 public abstract class Notification implements Serializable {
+
+    private Timestamp timestamp;
+
     public Timestamp getTimestamp() {
-        return Timestamp.from(Instant.now());
+        timestamp = Timestamp.from(Instant.now());
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

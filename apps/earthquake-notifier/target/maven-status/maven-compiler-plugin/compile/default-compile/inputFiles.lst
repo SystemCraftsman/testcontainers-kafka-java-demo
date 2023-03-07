@@ -1,3 +1,5 @@
 /Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/src/main/java/com/systemcraftsman/demo/App.java
 /Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/src/main/java/com/systemcraftsman/demo/model/LocationNotification.java
+/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/src/main/java/com/systemcraftsman/demo/serializer/NotificationSerializer.java
 /Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/src/main/java/com/systemcraftsman/demo/model/Notification.java
+/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/src/main/java/com/systemcraftsman/demo/NotificationProducer.java

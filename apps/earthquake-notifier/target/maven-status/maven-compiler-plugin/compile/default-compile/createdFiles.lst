@@ -1,3 +1,5 @@
+com/systemcraftsman/demo/serializer/NotificationSerializer.class
 com/systemcraftsman/demo/model/LocationNotification.class
 com/systemcraftsman/demo/App.class
 com/systemcraftsman/demo/model/Notification.class
+com/systemcraftsman/demo/NotificationProducer.class
