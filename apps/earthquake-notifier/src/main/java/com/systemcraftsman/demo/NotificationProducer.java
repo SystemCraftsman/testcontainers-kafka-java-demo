@@ -13,6 +13,7 @@ import java.util.Properties;
 public class NotificationProducer {
 
     private String bootstrapServers = "127.0.0.1:9092";
+    private String topicName = "notifications";
 
     public void produce(){
         Properties properties = new Properties();
@@ -27,7 +28,7 @@ public class NotificationProducer {
         locationNotification.setLatitude(faker.address().latitude());
 
         KafkaProducer<String, LocationNotification> producer = new KafkaProducer<>(properties);
-        ProducerRecord<String, LocationNotification> producerRecord = new ProducerRecord<>("notifications", locationNotification);
+        ProducerRecord<String, LocationNotification> producerRecord = new ProducerRecord<>(topicName, locationNotification);
 
         System.out.println(producerRecord.value());
         producer.send(producerRecord);
@@ -38,5 +39,9 @@ public class NotificationProducer {
 
     public void setBootstrapServers(String bootstrapServers) {
         this.bootstrapServers = bootstrapServers;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
     }
 }
