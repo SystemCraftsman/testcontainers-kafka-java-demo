@@ -29,5 +29,5 @@ public class AppTest {
 
     //TODO: Implement the testNotificationSending test method
     @Test
-    public void testNotificationSending() throws Exception {}
+    public void testNotificationSending() {}
 }
