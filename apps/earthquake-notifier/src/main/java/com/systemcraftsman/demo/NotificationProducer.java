@@ -12,11 +12,11 @@ import java.util.Properties;
 
 public class NotificationProducer {
 
-    private static String BOOTSTRAP_SERVERS = "127.0.0.1:9092";
+    private String bootstrapServers = "127.0.0.1:9092";
 
-    public static void produce(){
+    public void produce(){
         Properties properties = new Properties();
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, NotificationSerializer.class.getName());
 
@@ -34,5 +34,9 @@ public class NotificationProducer {
 
         producer.flush();
         producer.close();
+    }
+
+    public void setBootstrapServers(String bootstrapServers) {
+        this.bootstrapServers = bootstrapServers;
     }
 }
