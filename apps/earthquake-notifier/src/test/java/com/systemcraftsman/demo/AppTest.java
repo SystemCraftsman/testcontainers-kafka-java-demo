@@ -1,19 +1,13 @@
 package com.systemcraftsman.demo;
 
-import com.github.javafaker.Faker;
 import com.systemcraftsman.demo.deserializer.NotificationDeserializer;
 import com.systemcraftsman.demo.model.LocationNotification;
 import com.systemcraftsman.demo.model.Notification;
-import com.systemcraftsman.demo.serializer.NotificationSerializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.jupiter.api.Test;
 import org.rnorth.ducttape.unreliables.Unreliables;
 import org.testcontainers.containers.KafkaContainer;
@@ -24,10 +18,8 @@ import org.testcontainers.utility.DockerImageName;
 
 import java.time.Duration;
 import java.util.Collections;
-import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 //TODO: Annotate with @Testcontainers
@@ -45,18 +37,15 @@ public class AppTest {
         String topicName = "notifications-test";
         String bootstrapServers = kafka.getBootstrapServers();
 
-        KafkaProducer<String, Notification> producer = new KafkaProducer<>(ImmutableMap.of(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers, ProducerConfig.CLIENT_ID_CONFIG, UUID.randomUUID().toString()), new StringSerializer(), new NotificationSerializer());
+        NotificationProducer producer = new NotificationProducer();
+        producer.setBootstrapServers(bootstrapServers);
+        producer.setTopicName(topicName);
+
         KafkaConsumer<String, Notification> consumer = new KafkaConsumer<>(ImmutableMap.of(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers, ConsumerConfig.GROUP_ID_CONFIG, "collector-test", ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest"), new StringDeserializer(), new NotificationDeserializer());
 
         consumer.subscribe(Collections.singletonList(topicName));
 
-        Faker faker = new Faker();
-
-        LocationNotification locationNotification = new LocationNotification();
-        locationNotification.setLongitude(faker.address().longitude());
-        locationNotification.setLatitude(faker.address().latitude());
-
-        producer.send(new ProducerRecord<>(topicName, locationNotification)).get();
+        producer.produce();
 
         Unreliables.retryUntilTrue(10, TimeUnit.SECONDS, () -> {
             ConsumerRecords<String, Notification> records = consumer.poll(Duration.ofMillis(100));
@@ -68,8 +57,8 @@ public class AppTest {
             for (ConsumerRecord<String, Notification> record : records) {
                 LocationNotification consumedLocationNotification = (LocationNotification) record.value();
                 assertNotNull(consumedLocationNotification);
-                assertEquals(locationNotification.getLatitude(), consumedLocationNotification.getLatitude());
-                assertEquals(locationNotification.getLongitude(), consumedLocationNotification.getLongitude());
+                assertNotNull(consumedLocationNotification.getLatitude());
+                assertNotNull(consumedLocationNotification.getLongitude());
             }
 
             return true;
