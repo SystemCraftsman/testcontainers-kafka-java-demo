@@ -70,8 +70,6 @@ public class EarthquakeCollectorApplicationTest {
 
             return true;
         });
-
-
     }
 
 }

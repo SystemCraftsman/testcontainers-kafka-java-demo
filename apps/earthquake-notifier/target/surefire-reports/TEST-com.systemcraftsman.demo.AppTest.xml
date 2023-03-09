@@ -1,101 +1,70 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.systemcraftsman.demo.AppTest" time="0.581" errors="1" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.systemcraftsman.demo.AppTest" time="14.251" tests="1" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="java.vm.version" value="17.0.6+10"/>
-    <property name="sun.boot.library.path" value="/Users/mabulgu/Library/Java/JavaVirtualMachines/temurin-17.0.6/Contents/Home/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier"/>
-    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
-    <property name="java.vendor.url" value="https://adoptium.net/"/>
-    <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="path.separator" value=":"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="user.country" value="TR"/>
-    <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier"/>
-    <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="17.0.6+10"/>
-    <property name="os.arch" value="x86_64"/>
-    <property name="java.io.tmpdir" value="/var/folders/0n/m2mcfrmj6h132v21j0jy26jm0000gn/T/"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/mabulgu/apache-maven-3.6.2/bin/m2.conf"/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.library.path" value="/Users/mabulgu/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
-    <property name="maven.conf" value="/Users/mabulgu/apache-maven-3.6.2/conf"/>
-    <property name="jdk.debug" value="release"/>
-    <property name="java.class.version" value="61.0"/>
-    <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="13.2"/>
-    <property name="library.jansi.path" value="/Users/mabulgu/apache-maven-3.6.2/lib/jansi-native"/>
-    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
-    <property name="user.home" value="/Users/mabulgu"/>
-    <property name="user.timezone" value="Europe/Istanbul"/>
-    <property name="file.encoding" value="UTF-8"/>
     <property name="java.specification.version" value="17"/>
-    <property name="user.name" value="mabulgu"/>
-    <property name="java.class.path" value="/Users/mabulgu/apache-maven-3.6.2/boot/plexus-classworlds-2.6.0.jar"/>
-    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/test-classes:/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/classes:/Users/mabulgu/.m2/repository/org/apache/kafka/kafka-clients/3.4.0/kafka-clients-3.4.0.jar:/Users/mabulgu/.m2/repository/com/github/luben/zstd-jni/1.5.2-1/zstd-jni-1.5.2-1.jar:/Users/mabulgu/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/mabulgu/.m2/repository/org/xerial/snappy/snappy-java/1.1.8.4/snappy-java-1.1.8.4.jar:/Users/mabulgu/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/mabulgu/.m2/repository/com/github/javafaker/javafaker/1.0.2/javafaker-1.0.2.jar:/Users/mabulgu/.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/Users/mabulgu/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23-android.jar:/Users/mabulgu/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar:/Users/mabulgu/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.12.3/jackson-databind-2.12.3.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.12.3/jackson-annotations-2.12.3.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.12.3/jackson-core-2.12.3.jar:/Users/mabulgu/.m2/repository/org/testcontainers/kafka/1.17.6/kafka-1.17.6.jar:/Users/mabulgu/.m2/repository/org/testcontainers/testcontainers/1.17.6/testcontainers-1.17.6.jar:/Users/mabulgu/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/mabulgu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/mabulgu/.m2/repository/org/apache/commons/commons-compress/1.22/commons-compress-1.22.jar:/Users/mabulgu/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/Users/mabulgu/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-api/3.2.13/docker-java-api-3.2.13.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.2.13/docker-java-transport-zerodep-3.2.13.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-transport/3.2.13/docker-java-transport-3.2.13.jar:/Users/mabulgu/.m2/repository/net/java/dev/jna/jna/5.8.0/jna-5.8.0.jar:/Users/mabulgu/.m2/repository/org/testcontainers/junit-jupiter/1.17.6/junit-jupiter-1.17.6.jar:/Users/mabulgu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/Users/mabulgu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/mabulgu/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/Users/mabulgu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
-    <property name="java.home" value="/Users/mabulgu/Library/Java/JavaVirtualMachines/temurin-17.0.6/Contents/Home"/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Europe/Istanbul"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="TR"/>
+    <property name="sun.boot.library.path" value="/Users/mabulgu/Library/Java/JavaVirtualMachines/temurin-17.0.6/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/surefire/surefirebooter-20230309013704335_3.jar /Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/surefire 2023-03-09T01-37-04_026-jvmRun1 surefire-20230309013704335_1tmp surefire_0-20230309013704335_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/test-classes:/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/classes:/Users/mabulgu/.m2/repository/org/apache/kafka/kafka-clients/3.4.0/kafka-clients-3.4.0.jar:/Users/mabulgu/.m2/repository/com/github/luben/zstd-jni/1.5.2-1/zstd-jni-1.5.2-1.jar:/Users/mabulgu/.m2/repository/org/lz4/lz4-java/1.8.0/lz4-java-1.8.0.jar:/Users/mabulgu/.m2/repository/org/xerial/snappy/snappy-java/1.1.8.4/snappy-java-1.1.8.4.jar:/Users/mabulgu/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/mabulgu/.m2/repository/com/github/javafaker/javafaker/1.0.2/javafaker-1.0.2.jar:/Users/mabulgu/.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/Users/mabulgu/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23-android.jar:/Users/mabulgu/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar:/Users/mabulgu/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.12.3/jackson-databind-2.12.3.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.12.3/jackson-annotations-2.12.3.jar:/Users/mabulgu/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.12.3/jackson-core-2.12.3.jar:/Users/mabulgu/.m2/repository/org/testcontainers/kafka/1.17.6/kafka-1.17.6.jar:/Users/mabulgu/.m2/repository/org/testcontainers/testcontainers/1.17.6/testcontainers-1.17.6.jar:/Users/mabulgu/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/mabulgu/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/mabulgu/.m2/repository/org/apache/commons/commons-compress/1.22/commons-compress-1.22.jar:/Users/mabulgu/.m2/repository/org/rnorth/duct-tape/duct-tape/1.0.8/duct-tape-1.0.8.jar:/Users/mabulgu/.m2/repository/org/jetbrains/annotations/17.0.0/annotations-17.0.0.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-api/3.2.13/docker-java-api-3.2.13.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-transport-zerodep/3.2.13/docker-java-transport-zerodep-3.2.13.jar:/Users/mabulgu/.m2/repository/com/github/docker-java/docker-java-transport/3.2.13/docker-java-transport-3.2.13.jar:/Users/mabulgu/.m2/repository/net/java/dev/jna/jna/5.8.0/jna-5.8.0.jar:/Users/mabulgu/.m2/repository/org/testcontainers/junit-jupiter/1.17.6/junit-jupiter-1.17.6.jar:/Users/mabulgu/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.1/junit-jupiter-api-5.9.1.jar:/Users/mabulgu/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/mabulgu/.m2/repository/org/junit/platform/junit-platform-commons/1.9.1/junit-platform-commons-1.9.1.jar:/Users/mabulgu/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/mabulgu"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="17.0.6"/>
-    <property name="native.encoding" value="UTF-8"/>
-    <property name="java.vendor" value="Eclipse Adoptium"/>
-    <property name="sun.stderr.encoding" value="UTF-8"/>
-    <property name="maven.home" value="/Users/mabulgu/apache-maven-3.6.2"/>
-    <property name="file.separator" value="/"/>
     <property name="java.version.date" value="2023-01-17"/>
-    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
-    <property name="sun.cpu.endian" value="little"/>
-    <property name="java.vendor.version" value="Temurin-17.0.6+10"/>
-    <property name="sun.stdout.encoding" value="UTF-8"/>
-    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.home" value="/Users/mabulgu/Library/Java/JavaVirtualMachines/temurin-17.0.6/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier/target/surefire/surefirebooter-20230309013704335_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="17.0.6+10"/>
+    <property name="user.name" value="mabulgu"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="13.2"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.6+10"/>
+    <property name="localRepository" value="/Users/mabulgu/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/0n/m2mcfrmj6h132v21j0jy26jm0000gn/T/"/>
+    <property name="java.version" value="17.0.6"/>
+    <property name="user.dir" value="/Users/mabulgu/github-repos/systemcraftsman/testcontainers-kafka-java-demo/apps/earthquake-notifier"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/mabulgu/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.6+10"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase classname="com.systemcraftsman.demo.AppTest" name="testKafkaFunctionality" time="0.581">
-    <error message="Mapped port can only be obtained after the container is started" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Mapped port can only be obtained after the container is started
-	at org.testcontainers.shaded.com.google.common.base.Preconditions.checkState(Preconditions.java:174)
-	at org.testcontainers.containers.ContainerState.getMappedPort(ContainerState.java:149)
-	at org.testcontainers.containers.KafkaContainer.getBootstrapServers(KafkaContainer.java:73)
-	at com.systemcraftsman.demo.AppTest.testKafkaFunctionality(AppTest.java:47)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at junit.framework.TestCase.runTest(TestCase.java:177)
-	at junit.framework.TestCase.runBare(TestCase.java:142)
-	at junit.framework.TestResult$1.protect(TestResult.java:122)
-	at junit.framework.TestResult.runProtected(TestResult.java:142)
-	at junit.framework.TestResult.run(TestResult.java:125)
-	at junit.framework.TestCase.run(TestCase.java:130)
-	at junit.framework.TestSuite.runTest(TestSuite.java:241)
-	at junit.framework.TestSuite.run(TestSuite.java:236)
-	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:90)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
-	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
-	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
-</error>
-    <system-err>SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
+  <testcase name="testNotificationSending" classname="com.systemcraftsman.demo.AppTest" time="1.521">
+    <system-out><![CDATA[com.systemcraftsman.demo.model.LocationNotification@40f8f5a8[timestamp=2023-03-09 01:37:17.766101,latitude=-53.894930,longitude=-113.88041]
+]]></system-out>
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-</system-err>
+SLF4J: Failed to load class "org.slf4j.impl.StaticMDCBinder".
+SLF4J: Defaulting to no-operation MDCAdapter implementation.
+SLF4J: See http://www.slf4j.org/codes.html#no_static_mdc_binder for further details.
+]]></system-err>
   </testcase>
 </testsuite>

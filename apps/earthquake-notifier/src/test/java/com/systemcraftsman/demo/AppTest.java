@@ -33,7 +33,7 @@ public class AppTest {
 
     //TODO: Implement the testNotificationSending test method
     @Test
-    public void testNotificationSending() throws Exception {
+    public void testNotificationSending() {
         String topicName = "notifications-test";
         String bootstrapServers = kafka.getBootstrapServers();
 
@@ -65,6 +65,5 @@ public class AppTest {
         });
 
         consumer.unsubscribe();
-
     }
 }
