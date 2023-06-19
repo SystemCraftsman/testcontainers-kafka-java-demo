@@ -29,7 +29,7 @@ public class AppTest {
     //TODO: Add the Kafka container instance
     @Container
     public static KafkaContainer kafka =
-            new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
+            new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.4.0"));
 
     //TODO: Implement the testNotificationSending test method
     @Test
